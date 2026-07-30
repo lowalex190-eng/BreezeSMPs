@@ -1,0 +1,26 @@
+name: Build Plugin
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unzip project
+        run: unzip BreezeSMP.zip
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      - name: Build with Maven
+        run: mvn -B -f BreezeSMP/pom.xml clean package
+      - name: Upload jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: BreezeSMP-jar
+          path: BreezeSMP/target/BreezeSMP.jar
