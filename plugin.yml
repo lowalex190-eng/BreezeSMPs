@@ -1,0 +1,17 @@
+name: BreezeSMP
+version: '1.0.0'
+main: com.breezesmp.plugin.BreezeSMP
+api-version: '1.21'
+author: BreezeSMP
+
+commands:
+  breezesmp:
+    description: BreezeSMP custom weapons command
+    usage: /breezesmp [give <player>] <windchargerod|oblivionsword>
+    permission: breezesmp.admin
+    permission-message: You do not have permission to use this command.
+
+permissions:
+  breezesmp.admin:
+    description: Allows use of /breezesmp
+    default: op
